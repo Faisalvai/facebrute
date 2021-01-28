@@ -202,7 +202,7 @@ def Main():
    update = options.update
    opts = [target,wordlist,single_passwd, proxy, target_profile, update]
    if any(opt for opt in opts):
-     if not faceboom.cnet():
+     if not facebrute.cnet():
        errMsg("Please Check Your Internet Connection")
        sys.exit(1)
    if update:
