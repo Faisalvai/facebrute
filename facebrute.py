@@ -193,7 +193,7 @@ def Main():
                         help="Specify TARGET FACEBOOK PROFILE URL to get his ID")
    parse.add_option("-u","-U","--update","--UPDATE", dest="update", action="store_true", default=False)
    (options,args) = parse.parse_args()
-   faceboom = FaceBoom()
+   facebrute = FaceBrute()
    target = options.target
    wordlist = options.wordlist
    single_passwd = options.single
@@ -206,7 +206,7 @@ def Main():
        errMsg("Please Check Your Internet Connection")
        sys.exit(1)
    if update:
-    faceboom.updateFaceBoom()
+    facebrute.updateFaceBrute()
     sys.exit(1)
    elif target_profile:
         faceboom.get_profile_id(target_profile)
